@@ -1,0 +1,29 @@
+!pip install tensorboardX
+
+!git clone https://github.com/facebookresearch/pythia.git
+%mv ./pythia/* ./
+
+# Get test images
+!wget http://images.cocodataset.org/zips/test2015.zip
+!unzip test2015.zip
+#im_dir = './test2015'
+# Get the models
+!wget https://dl.fbaipublicfiles.com/pythia/pretrained_models/detectron_100_resnet_most_data.tar.gz
+!tar -xvf detectron_100_resnet_most_data.tar
+!mv ./detectron_100_resnet_most_data/1234/best_model.pth ./best_model/
+
+# wget https://dl.fbaipublicfiles.com/pythia/pretrained_models/most_data_models.tar.gz and 
+# move the best_model.pth from the uncompressed file to the folder best_model
+# Get features
+!mkdir data
+%cd data
+!wget https://dl.fbaipublicfiles.com/pythia/data/vqa2.0_glove.6B.300d.txt.npy
+!wget https://dl.fbaipublicfiles.com/pythia/data/vocabulary_vqa.txt
+!wget https://dl.fbaipublicfiles.com/pythia/data/answers_vqa.txt
+!wget https://dl.fbaipublicfiles.com/pythia/data/imdb.tar.gz
+!wget https://dl.fbaipublicfiles.com/pythia/features/rcnn_10_100.tar.gz
+!wget https://dl.fbaipublicfiles.com/pythia/data/large_vocabulary_vqa.txt
+!wget https://dl.fbaipublicfiles.com/pythia/data/large_vqa2.0_glove.6B.300d.txt.npy
+!tar -xf rcnn_10_100.tar.gz
+!tar -xf imdb.tar.gz
+%cd ..
